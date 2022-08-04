@@ -46,7 +46,7 @@ const Favorites = () => {
             <h1>Favorites</h1>
             {movies.map((movie, index) => {
                 return (
-                    <article>
+                    <article className="card">
                         <Card
                             key={movie.backdrop_path}
                             poster={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}

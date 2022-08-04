@@ -1,4 +1,43 @@
+import moment from "moment"
+import { useEffect, useState } from "react"
+import Card from "../components/Card"
+
 const Weekly = () => {
-    return <h1>Weekly</h1>
+  // state
+  const [apiKey] = useState("001a38bf2605ca310636ecc47e07be51")
+  const [weeklyMovies, setWeeklyMovies] = useState([])
+  //didMount
+  useEffect(() => {
+    fetchData()
+    // eslint-disable-next-line
+  }, [])
+
+  // methodes
+  const fetchData = async () => {
+    const today = moment().format("YYYY-MM-DD")
+    const sevenDaysAgo = moment().subtract(7, "days").format("YYYY-MM-DD")
+    const request = await fetch(
+      `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${sevenDaysAgo}&primary_release_date.lte=${today}&api_key=${apiKey}`
+    )
+    const response = await request.json()
+    setWeeklyMovies(response.results)
+  }
+  console.log(weeklyMovies)
+  return (
+    <>
+      <h1>Weekly</h1>
+      {weeklyMovies.map((weeklyMovie) => {
+        return (
+          <Card
+            key={weeklyMovie.backdrop_path}
+            poster={`https://image.tmdb.org/t/p/w300/${weeklyMovie.poster_path}`}
+            title={weeklyMovie.title}
+            year={weeklyMovie.release_date}
+            description={weeklyMovie.overview}
+          />
+        )
+      })}
+    </>
+  )
 }
 export default Weekly
