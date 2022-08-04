@@ -44,16 +44,22 @@ const Popular = () => {
             <h1>Popular</h1>
             {popularMovies.map((popularMovie) => {
                 return (
-                    <Card
-                        key={popularMovie.backdrop_path}
-                        poster={`https://image.tmdb.org/t/p/w300/${popularMovie.poster_path}`}
-                        title={popularMovie.title}
-                        year={popularMovie.release_date}
-                        description={popularMovie.overview}
-                        AddToFavorites={() =>
-                            handleAddToFavoritesClick(popularMovie.id)
-                        }
-                    />
+                    <>
+                        <Card
+                            key={popularMovie.backdrop_path}
+                            poster={`https://image.tmdb.org/t/p/w300/${popularMovie.poster_path}`}
+                            title={popularMovie.title}
+                            year={popularMovie.release_date}
+                            description={popularMovie.overview}
+                        />
+                        <button
+                            onClick={() =>
+                                handleAddToFavoritesClick(popularMovie.id)
+                            }
+                        >
+                            Add to favorites
+                        </button>
+                    </>
                 )
             })}
         </>
