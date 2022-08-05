@@ -32,34 +32,35 @@ const Favorites = () => {
         return response
     }
 
-    const handleRemoveFavoriteClick = (index) => {
-        const strigifiedFavoriteIds = localStorage.getItem("favoriteIds")
-        const favoriteIds = JSON.parse(strigifiedFavoriteIds)
-        favoriteIds.splice(index, 1)
-        const strigifiedSplicedFavoriteIds = JSON.stringify(favoriteIds)
-        localStorage.setItem("favoriteIds", strigifiedSplicedFavoriteIds)
-        fetchFavorites()
-    }
-
+    // const handleRemoveFavoriteClick = (index) => {
+    //     const strigifiedFavoriteIds = localStorage.getItem("favoriteIds")
+    //     const favoriteIds = JSON.parse(strigifiedFavoriteIds)
+    //     favoriteIds.splice(index, 1)
+    //     const strigifiedSplicedFavoriteIds = JSON.stringify(favoriteIds)
+    //     localStorage.setItem("favoriteIds", strigifiedSplicedFavoriteIds)
+    //     fetchFavorites()
+    // }
+    console.log(movies)
     return (
         <section>
             <h1>Favorites</h1>
             {movies.map((movie, index) => {
                 return (
-                    <article className="card">
+                    <>
                         <Card
-                            key={movie.backdrop_path}
-                            poster={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                            key={`fav${movie.id}${movie.title}`}
+                            poster={movie.poster_path}
                             title={movie.title}
                             year={movie.release_date}
                             description={movie.overview}
+                            id={movie.id}
                         />
-                        <button
+                        {/* <button
                             onClick={() => handleRemoveFavoriteClick(index)}
                         >
                             Delete from favorites
-                        </button>
-                    </article>
+                        </button> */}
+                    </>
                 )
             })}
         </section>
