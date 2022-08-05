@@ -24,21 +24,23 @@ const Weekly = () => {
     }
 
     return (
-        <>
+        <main>
             <h1>Weekly</h1>
-            {weeklyMovies.map((weeklyMovie) => {
-                return (
-                    <Card
-                        key={`${weeklyMovie.id}${weeklyMovie.title}`}
-                        poster={weeklyMovie.poster_path}
-                        title={weeklyMovie.title}
-                        year={weeklyMovie.release_date}
-                        description={weeklyMovie.overview}
-                        id={weeklyMovie.id}
-                    />
-                )
-            })}
-        </>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
+                {weeklyMovies.map((weeklyMovie) => {
+                    return (
+                        <Card
+                            key={`${weeklyMovie.id}${weeklyMovie.title}`}
+                            poster={weeklyMovie.poster_path}
+                            title={weeklyMovie.title}
+                            year={weeklyMovie.release_date}
+                            description={weeklyMovie.overview}
+                            id={weeklyMovie.id}
+                        />
+                    )
+                })}
+            </section>
+        </main>
     )
 }
 export default Weekly

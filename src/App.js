@@ -27,15 +27,14 @@ const App = () => {
                     </Link>
                 </nav>
             </header>
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/favorites" element={<Favorites />} />
-                    <Route path="/popular" element={<Popular />} />
-                    <Route path="/weekly" element={<Weekly />} />
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </main>
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/popular" element={<Popular />} />
+                <Route path="/weekly" element={<Weekly />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
         </BrowserRouter>
     )
 }

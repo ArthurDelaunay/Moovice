@@ -32,38 +32,27 @@ const Favorites = () => {
         return response
     }
 
-    // const handleRemoveFavoriteClick = (index) => {
-    //     const strigifiedFavoriteIds = localStorage.getItem("favoriteIds")
-    //     const favoriteIds = JSON.parse(strigifiedFavoriteIds)
-    //     favoriteIds.splice(index, 1)
-    //     const strigifiedSplicedFavoriteIds = JSON.stringify(favoriteIds)
-    //     localStorage.setItem("favoriteIds", strigifiedSplicedFavoriteIds)
-    //     fetchFavorites()
-    // }
-    console.log(movies)
     return (
-        <section>
+        <main>
             <h1>Favorites</h1>
-            {movies.map((movie, index) => {
-                return (
-                    <>
-                        <Card
-                            key={`fav${movie.id}${movie.title}`}
-                            poster={movie.poster_path}
-                            title={movie.title}
-                            year={movie.release_date}
-                            description={movie.overview}
-                            id={movie.id}
-                        />
-                        {/* <button
-                            onClick={() => handleRemoveFavoriteClick(index)}
-                        >
-                            Delete from favorites
-                        </button> */}
-                    </>
-                )
-            })}
-        </section>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
+                {movies.map((movie) => {
+                    return (
+                        <>
+                            <Card
+                                key={`fav${movie.backdrop_path}${movie.title}`}
+                                poster={movie.poster_path}
+                                title={movie.title}
+                                year={movie.release_date}
+                                description={movie.overview}
+                                id={movie.id}
+                                render={fetchFavorites}
+                            />
+                        </>
+                    )
+                })}
+            </section>
+        </main>
     )
 }
 export default Favorites

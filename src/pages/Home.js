@@ -58,7 +58,7 @@ const Home = () => {
     return (
         <main>
             <h1>Home</h1>
-            <section>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
                 <h2>Latest Movies</h2>
                 {latestMovies.map((movie) => {
                     return (
@@ -73,7 +73,7 @@ const Home = () => {
                     )
                 })}
             </section>
-            <section>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
                 <h2>Top Rated Movies</h2>
                 {topRatedMovies.map((movie) => {
                     return (
@@ -88,7 +88,7 @@ const Home = () => {
                     )
                 })}
             </section>
-            <section>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
                 <h2>Now Playing</h2>
                 {nowPlayingMovies.map((movie) => {
                     return (
@@ -103,7 +103,7 @@ const Home = () => {
                     )
                 })}
             </section>
-            <section>
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
                 <h2>Upcoming</h2>
                 {upcomingMovies.map((movie) => {
                     return (

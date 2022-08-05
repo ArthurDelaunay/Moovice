@@ -22,11 +22,11 @@ const Popular = () => {
     }
 
     return (
-        <>
+        <main>
             <h1>Popular</h1>
-            {popularMovies.map((popularMovie) => {
-                return (
-                    <article className="">
+            <section className="w-screen flex flex-wrap gap-2 justify-center">
+                {popularMovies.map((popularMovie) => {
+                    return (
                         <Card
                             key={`${popularMovie.id}${popularMovie.title}`}
                             poster={popularMovie.poster_path}
@@ -35,10 +35,10 @@ const Popular = () => {
                             description={popularMovie.overview}
                             id={popularMovie.id}
                         />
-                    </article>
-                )
-            })}
-        </>
+                    )
+                })}
+            </section>
+        </main>
     )
 }
 export default Popular

@@ -1,1 +1,16 @@
+.image-size {
+    width: 300px;
+    height: 500px;
+}
 
+.image-hover:hover {
+    color: white;
+    transform: scale(1.03);
+    z-index: 5;
+}
+.image-hover {
+    color: rgba(0, 0, 0, 0);
+}
+.image-hover:hover img {
+    filter: brightness(20%) blur(2px);
+}
