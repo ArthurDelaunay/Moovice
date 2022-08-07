@@ -19,13 +19,11 @@ const Home = () => {
     }, [])
     //methodes
     const fetchLasterMovies = async () => {
-        const today = moment().format("YYYY-MM-DD")
-        const threeDaysAgo = moment().subtract(3, "days").format("YYYY-MM-DD")
         const request = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${threeDaysAgo}&primary_release_date.lte=${today}&api_key=${apiKey}`
+            `https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}`
         )
         const response = await request.json()
-        setLastestMovies(response.results)
+        setLastestMovies(response)
     }
 
     const fetchTopRatedMovies = async () => {
@@ -57,24 +55,25 @@ const Home = () => {
     //render
     return (
         <main>
-            <h1>Home</h1>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
-                <h2>Latest Movies</h2>
-                {latestMovies.map((movie) => {
-                    return (
-                        <Card
-                            key={`lm${movie.id}${movie.title}`}
-                            poster={movie.poster_path}
-                            title={movie.title}
-                            year={movie.release_date}
-                            description={movie.overview}
-                            id={movie.id}
-                        />
-                    )
-                })}
+            <h2 className="text-zinc-50 text-3xl text-center pt-5 pb-10">
+                Home
+            </h2>
+            <h3 className="text-zinc-50 text-xl pl-8 pb-5">Latest Movie</h3>
+            <section className="w-calc flex justify-center pt-2 px-3">
+                <Card
+                    key={`lm${latestMovies.id}${latestMovies.title}`}
+                    poster={latestMovies.poster_path}
+                    title={latestMovies.title}
+                    year={latestMovies.release_date}
+                    description={latestMovies.overview}
+                    id={latestMovies.id}
+                    isAdult={latestMovies.adult}
+                />
             </section>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
-                <h2>Top Rated Movies</h2>
+            <h3 className="text-zinc-50 text-xl pl-8 pb-5 pt-10">
+                Top Rated Movies
+            </h3>
+            <section className="flex flex-wrap justify-center gap-2 pt-2 px-3">
                 {topRatedMovies.map((movie) => {
                     return (
                         <Card
@@ -84,12 +83,15 @@ const Home = () => {
                             year={movie.release_date}
                             description={movie.overview}
                             id={movie.id}
+                            isAdult={movie.adult}
                         />
                     )
                 })}
             </section>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
-                <h2>Now Playing</h2>
+            <h3 className="text-zinc-50 text-xl pl-8 pb-5 pt-10">
+                Now Playing
+            </h3>
+            <section className="w-calc flex flex-wrap gap-2 justify-center pt-2 px-3 ">
                 {nowPlayingMovies.map((movie) => {
                     return (
                         <Card
@@ -99,12 +101,13 @@ const Home = () => {
                             year={movie.release_date}
                             description={movie.overview}
                             id={movie.id}
+                            isAdult={movie.adult}
                         />
                     )
                 })}
             </section>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
-                <h2>Upcoming</h2>
+            <h3 className="text-zinc-50 text-xl pl-8 pb-5 pt-10">Upcoming</h3>
+            <section className="w-calc flex flex-wrap gap-2 justify-center pt-2 px-3">
                 {upcomingMovies.map((movie) => {
                     return (
                         <Card

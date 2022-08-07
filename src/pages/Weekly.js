@@ -24,9 +24,11 @@ const Weekly = () => {
     }
 
     return (
-        <main>
-            <h1>Weekly</h1>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
+        <main className="w-calc">
+            <h2 className="text-zinc-50 text-3xl text-center pt-5 pb-10">
+                Weekly
+            </h2>
+            <section className="w-full flex flex-wrap gap-2 justify-center">
                 {weeklyMovies.map((weeklyMovie) => {
                     return (
                         <Card
@@ -36,6 +38,7 @@ const Weekly = () => {
                             year={weeklyMovie.release_date}
                             description={weeklyMovie.overview}
                             id={weeklyMovie.id}
+                            isAdult={weeklyMovie.adult}
                         />
                     )
                 })}

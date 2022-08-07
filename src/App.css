@@ -1,3 +1,12 @@
+body {
+    background-color: rgb(7, 26, 37);
+}
+main {
+    padding-top: 70px;
+}
+header {
+    background-color: rgb(7, 26, 37);
+}
 .image-size {
     width: 300px;
     height: 500px;
@@ -13,4 +22,20 @@
 }
 .image-hover:hover img {
     filter: brightness(20%) blur(2px);
+}
+
+.h-calc {
+    height: calc(100vh - 170px);
+}
+
+.w-calc {
+    width: calc(100% - 20px);
+}
+
+.test-overflow {
+    overflow-x: auto;
+}
+
+.link.active {
+    display: none;
 }

@@ -43,8 +43,8 @@ const Card = (props) => {
     }
 
     return (
-        <article className="flex border-1 border-solid border-orange-500 object-cover image-hover">
-            {props.poster === null ? (
+        <article className="flex border-2 border-solid border-orange-500 image-hover w-[304px] h-[504px]">
+            {props.poster === null || props.isAdult ? (
                 <img
                     src={defaultPoster}
                     alt={props.title}
@@ -63,7 +63,7 @@ const Card = (props) => {
                         onClick={() => handleChangeFavoritesClick(props.id)}
                     >
                         <p
-                            className={`text-5xl ${
+                            className={`cursor-pointer text-5xl ${
                                 favoriteIds.includes(props.id)
                                     ? "text-red-600"
                                     : "text-teal-400"
@@ -74,10 +74,11 @@ const Card = (props) => {
                     </button>
                 </div>
                 <div className="justify-between flex flex-col h-[90%]">
-                    <h2 className="text-2xl text-center">{props.title}</h2>
-
-                    <p className="text-center">{props.description}</p>
-                    <p className="text-center">{props.year}</p>
+                    <h2 className="text-2xl text-center ">{props.title}</h2>
+                    <p className="text-center text-ellipsis overflow-hidden h-[65%]">
+                        {props.description}
+                    </p>
+                    <p className="text-center h-[10%]">{props.year}</p>
                 </div>
             </div>
         </article>

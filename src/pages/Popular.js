@@ -23,8 +23,10 @@ const Popular = () => {
 
     return (
         <main>
-            <h1>Popular</h1>
-            <section className="w-screen flex flex-wrap gap-2 justify-center">
+            <h2 className="text-zinc-50 text-3xl text-center pt-5 pb-10">
+                Popular
+            </h2>
+            <section className="w-calc flex flex-wrap gap-2 justify-center">
                 {popularMovies.map((popularMovie) => {
                     return (
                         <Card
@@ -34,6 +36,7 @@ const Popular = () => {
                             year={popularMovie.release_date}
                             description={popularMovie.overview}
                             id={popularMovie.id}
+                            isAdult={popularMovie.adult}
                         />
                     )
                 })}
